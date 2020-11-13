@@ -39,18 +39,29 @@ def record_audio(ask=False):
 def respond(voice_data):
     if 'what is your name' in voice_data:
         luna_speak('My name is Luna')
-    if 'what time is it' in voice_data:
+
+    if 'how are you' in voice_data:
+        luna_speak('I am doing great. Thank you')
+
+    if 'why is your name Luna' in voice_data:
+        luna_speak('I am named after a laptop called Luna')
+    
+    if 'what do you eat' in voice_data:
+        luna_speak('I eat computer chips')
+
+    if 'what day is it' in voice_data:
         luna_speak(ctime())
+
     if 'search' in voice_data:
         search = record_audio('What do you want to search for?')
         url = 'https://google.com/search?q='+search
         webbrowser.get().open(url)
-        luna_speak('Here is what I found for you')
+
     if 'find location' in voice_data:
         location = record_audio('What is the location?')
         url = 'https://google.nl/maps/place/'+location+'/&amp'
         webbrowser.get().open(url)
-        luna_speak('Here is the location'+ location)
+
     if 'exit' in voice_data:
         luna_speak('Bye')
         exit()
